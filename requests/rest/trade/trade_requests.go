@@ -122,6 +122,6 @@ type (
 	}
 	AlgoOrder struct {
 		InstID string `json:"instId"`
-		AlgoID string `json:"AlgoId"`
+		AlgoID string `json:"algoId"`
 	}
 )
