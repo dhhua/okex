@@ -73,9 +73,10 @@ type (
 		Side       okex.OrderSide     `json:"side"`
 		PosSide    okex.PositionSide  `json:"posSide,omitempty"`
 		OrdType    okex.AlgoOrderType `json:"ordType"`
-		Sz         okex.JSONFloat64   `json:"sz,string"`
+		Sz         float64            `json:"sz,string"`
 		ReduceOnly bool               `json:"reduceOnly,omitempty"`
 		TgtCcy     okex.QuantityType  `json:"tgtCcy,omitempty"`
+		MoveStopOrder
 		StopOrder
 		TriggerOrder
 		IcebergOrder
