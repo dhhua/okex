@@ -83,8 +83,9 @@ type (
 		TWAPOrder
 	}
 	MoveStopOrder struct {
-		CallbackRatio okex.JSONFloat64 `json:"callback_ratio,string"`
-		ActivePx      okex.JSONFloat64 `json:"active_px,string"`
+		CallbackSpread okex.JSONFloat64 `json:"callback_spread,string"`
+		CallbackRatio  okex.JSONFloat64 `json:"callback_ratio,string"`
+		ActivePx       okex.JSONFloat64 `json:"active_px,string"`
 	}
 	StopOrder struct {
 		TpTriggerPx float64 `json:"tpTriggerPx,string,omitempty"`
