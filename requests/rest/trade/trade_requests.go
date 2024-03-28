@@ -120,4 +120,8 @@ type (
 		OrdType  okex.AlgoOrderType  `json:"ordType,omitempty"`
 		State    okex.OrderState     `json:"state,omitempty"`
 	}
+	AlgoOrder struct {
+		InstID string `json:"instId"`
+		AlgoID string `json:"AlgoId"`
+	}
 )
