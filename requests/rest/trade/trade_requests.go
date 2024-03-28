@@ -73,13 +73,17 @@ type (
 		Side       okex.OrderSide     `json:"side"`
 		PosSide    okex.PositionSide  `json:"posSide,omitempty"`
 		OrdType    okex.AlgoOrderType `json:"ordType"`
-		Sz         int64              `json:"sz,string"`
+		Sz         okex.JSONFloat64   `json:"sz,string"`
 		ReduceOnly bool               `json:"reduceOnly,omitempty"`
 		TgtCcy     okex.QuantityType  `json:"tgtCcy,omitempty"`
 		StopOrder
 		TriggerOrder
 		IcebergOrder
 		TWAPOrder
+	}
+	MoveStopOrder struct {
+		CallbackRatio okex.JSONFloat64 `json:"callback_ratio,string"`
+		ActivePx      okex.JSONFloat64 `json:"active_px,string"`
 	}
 	StopOrder struct {
 		TpTriggerPx float64 `json:"tpTriggerPx,string,omitempty"`
