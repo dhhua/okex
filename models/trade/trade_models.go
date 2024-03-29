@@ -10,7 +10,7 @@ type (
 		Tag     string         `json:"tag"`
 		SMsg    string         `json:"sMsg"`
 		SCode   okex.JSONInt64 `json:"sCode"`
-		OrdID   string         `json:"ordId"`
+		OrdID   string         `json:"ordId"` // string
 	}
 	CancelOrder struct {
 		OrdID   string           `json:"ordId"`
