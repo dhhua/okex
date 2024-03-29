@@ -63,14 +63,8 @@ type (
 		VolCcy float64
 		TS     okex.JSONTime
 	}
-	IndexCandle struct {
-		O  float64
-		H  float64
-		L  float64
-		C  float64
-		TS okex.JSONTime
-	}
-	Trade struct {
+	IndexCandle []string
+	Trade       struct {
 		InstID  string           `json:"instId"`
 		TradeID okex.JSONFloat64 `json:"tradeId"`
 		Px      okex.JSONFloat64 `json:"px"`
@@ -186,46 +180,46 @@ func (c *Candle) UnmarshalJSON(buf []byte) error {
 	return nil
 }
 
-func (c *IndexCandle) UnmarshalJSON(buf []byte) error {
-	var (
-		o, h, l, cl, ts string
-		err             error
-	)
-	tmp := []interface{}{&ts, &o, &h, &l, &cl}
-	wantLen := len(tmp)
-	if err := json.Unmarshal(buf, &tmp); err != nil {
-		return err
-	}
-
-	if g, e := len(tmp), wantLen; g != e {
-		return fmt.Errorf("wrong number of fields in Candle: %d != %d", g, e)
-	}
-
-	timestamp, err := strconv.ParseInt(ts, 10, 64)
-	if err != nil {
-		return err
-	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
-
-	c.O, err = strconv.ParseFloat(o, 64)
-	if err != nil {
-		return err
-	}
-
-	c.H, err = strconv.ParseFloat(h, 64)
-	if err != nil {
-		return err
-	}
-
-	c.L, err = strconv.ParseFloat(l, 64)
-	if err != nil {
-		return err
-	}
-
-	c.C, err = strconv.ParseFloat(cl, 64)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
+//func (c *IndexCandle) UnmarshalJSON(buf []byte) error {
+//	var (
+//		o, h, l, cl, ts string
+//		err             error
+//	)
+//	tmp := []interface{}{&ts, &o, &h, &l, &cl}
+//	wantLen := len(tmp)
+//	if err := json.Unmarshal(buf, &tmp); err != nil {
+//		return err
+//	}
+//
+//	if g, e := len(tmp), wantLen; g != e {
+//		return fmt.Errorf("wrong number of fields in Candle: %d != %d", g, e)
+//	}
+//
+//	timestamp, err := strconv.ParseInt(ts, 10, 64)
+//	if err != nil {
+//		return err
+//	}
+//	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+//
+//	c.O, err = strconv.ParseFloat(o, 64)
+//	if err != nil {
+//		return err
+//	}
+//
+//	c.H, err = strconv.ParseFloat(h, 64)
+//	if err != nil {
+//		return err
+//	}
+//
+//	c.L, err = strconv.ParseFloat(l, 64)
+//	if err != nil {
+//		return err
+//	}
+//
+//	c.C, err = strconv.ParseFloat(cl, 64)
+//	if err != nil {
+//		return err
+//	}
+//
+//	return nil
+//}
